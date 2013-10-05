@@ -1,31 +1,42 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , olinapps = require('olinapps')
+  , mongojs = require('mongojs')
+  , MongoStore = require('connect-mongo')(express);
 
-var app = express();
+var app = express(), db;
 
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.configure(function () {
+  db = mongojs(process.env.MONGOLAB_URI || 'olinapps-quotes', ['quotes']);
+  app.set('port', process.env.PORT || 3000);
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.set('secret', process.env.SESSION_SECRET || 'terrible, terrible secret')
+  app.use(express.favicon());
+  app.use(express.logger('dev'));
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(express.cookieParser(app.get('secret')));
+  app.use(express.session({
+    secret: app.get('secret'),
+    store: new MongoStore({
+      url: process.env.MONGOLAB_URI || 'mongodb://localhost/'
+    })
+  }));
+  app.use(app.router);
+  app.use(express.static(path.join(__dirname, 'public')));
+});
 
-// development only
-if ('development' == app.get('env')) {
+app.configure('development', function () {
+  app.set('host', 'localhost:3000');
   app.use(express.errorHandler());
-}
+});
+
 
 app.get('/', routes.index);
 app.get('/users', user.list);
