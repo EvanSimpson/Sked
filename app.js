@@ -25,7 +25,7 @@ app.configure(function () {
   app.use(express.session({
     secret: app.get('secret'),
     store: new MongoStore({
-      url: process.env.MONGOLAB_URI || 'mongodb://localhost/'
+      url: process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB
     })
   }));
   app.use(app.router);
