@@ -5,7 +5,6 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , olinapps = require('olinapps')
   , mongojs = require('mongojs')
   , MongoStore = require('connect-mongo')(express);
 
