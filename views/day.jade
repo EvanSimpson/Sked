@@ -1,12 +1,42 @@
 block content
+	style.
+		#out1::after { color: #aaa; content: "12am"; float: right; }
+		#out2::after { color: #aaa; content: "1am"; float: right; }
+		#out3::after { color: #aaa; content: "2am"; float: right; }
+		#out4::after { color: #aaa; content: "3am"; float: right; }
+		#out5::after { color: #aaa; content: "4am"; float: right; }
+		#out6::after { color: #aaa; content: "5am"; float: right; }
+		#out7::after { color: #aaa; content: "6am"; float: right; }
+		#out8::after { color: #aaa; content: "7am"; float: right; }
+		#out9::after { color: #aaa; content: "8am"; float: right; }
+		#out10::after { color: #aaa; content: "9am"; float: right; }
+		#out11::after { color: #aaa; content: "10am"; float: right; }
+		#out12::after { color: #aaa; content: "11am"; float: right; }
+		#out13::after { color: #aaa; content: "12pm"; float: right; }
+		#out14::after { color: #aaa; content: "1pm"; float: right; }
+		#out15::after { color: #aaa; content: "2pm"; float: right; }
+		#out16::after { color: #aaa; content: "3pm"; float: right; }
+		#out17::after { color: #aaa; content: "4pm"; float: right; }
+		#out18::after { color: #aaa; content: "5pm"; float: right; }
+		#out19::after { color: #aaa; content: "6pm"; float: right; }
+		#out20::after { color: #aaa; content: "7pm"; float: right; }
+		#out21::after { color: #aaa; content: "8pm"; float: right; }
+		#out22::after { color: #aaa; content: "9pm"; float: right; }
+		#out23::after { color: #aaa; content: "10pm"; float: right; }
+		#out24::after { color: #aaa; content: "11pm"; float: right; }
+
+		#results { margin-top: -120px; height: 1014px; overflow: auto; box-sizing: border-box; }
+		body { padding-bottom: 0; margin-bottom: 0; }
+
 	div
-		div.back
-			a(href="#" id="backButton") ← Back
 		div.row
-			div(class="col-lg-6" id="editor-parent")
-				textarea(class="editor" id="editor1")
-				div.add
-					a(href="#" id="addButton") + Add
+			div(class="col-lg-6")
+				div.back
+					a(href="#" id="backButton") ← Back
+				div(id="editor-parent")
+					textarea(class="editor" id="editor1")
+					div.add
+						a(href="#" id="addButton") + Add
 			div(class="col-lg-6" id="results")
 				div(class="output" id="out1")
 				div(class="output" id="out2")

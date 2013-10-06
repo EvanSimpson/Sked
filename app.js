@@ -12,7 +12,7 @@ var express = require('express')
 var app = express(), db;
 
 app.configure(function () {
-  db = mongojs(process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB);
+  db = mongojs(process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB || 'localhost/sked');
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -25,7 +25,7 @@ app.configure(function () {
   app.use(express.session({
     secret: app.get('secret'),
     store: new MongoStore({
-      url: process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB
+      url: process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB || 'localhost/sked'
     })
   }));
   app.use(app.router);
