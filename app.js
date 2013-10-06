@@ -43,7 +43,10 @@ app.get('/', function(req, res){
 });
 app.get('/month/:year/:month', function(req, res){
 	var date = moment({year:req.params.year, month:req.params.month});
-	res.render('month', {"monthnum":date.month(), "month": date.format("MMMM"), "back":date.subtract("M", 1).month(), "forward":date.add("M", 1).month(), "year":date.year()});
+	res.render('month', {"monthnum":date.month(), "month": date.format("MMMM"), "year":date.year()});
+});
+app.get('/new/week/:num', function(req, res){
+	res.render('week', {week:"week"+req.params.num});
 });
 
 http.createServer(app).listen(app.get('port'), function(){

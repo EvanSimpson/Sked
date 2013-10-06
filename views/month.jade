@@ -4,11 +4,11 @@ block content
     div(id="date" data-month=monthnum data-year=year)
     div.row
       div(class="month-back month-nav col-lg-3")
-        a(href="#" class="nav" data-month=back) ← Previous
+        a(href="#" class="nav" id="previous") ← Previous
       div(id="month" class="col-lg-6")
         h1= month
       div(class="month-forward month-nav col-lg-3")
-        a(href="#" class="nav" data-month=forward) Next →
+        a(href="#" class="nav" id="next") Next →
   div(class="weekdays")
       div(class="dayh sunday")
         h3 Sunday
@@ -24,115 +24,6 @@ block content
         h3 Friday
       div(class="dayh saturday")
         h3 Saturday
-    div(class="week week1")
-      div(class="day sunday")
-        div.date
-        div.events
-      div(class="day monday")
-        div.date
-        div.events
-      div(class="day tuesday")
-        div.date
-        div.events
-      div(class="day wednesday")
-        div.date
-        div.events
-      div(class="day thursday")
-        div.date
-        div.events
-      div(class="day friday")
-        div.date
-        div.events
-      div(class="day saturday")
-        div.date
-        div.events
-    div(class="week week2")
-      div(class="day sunday")
-        div.date
-        div.events
-      div(class="day monday")
-        div.date
-        div.events
-      div(class="day tuesday")
-        div.date
-        div.events
-      div(class="day wednesday")
-        div.date
-        div.events
-      div(class="day thursday")
-        div.date
-        div.events
-      div(class="day friday")
-        div.date
-        div.events
-      div(class="day saturday")
-        div.date
-        div.events
-    div(class="week week3")
-      div(class="day sunday")
-        div.date
-        div.events
-      div(class="day monday")
-        div.date
-        div.events
-      div(class="day tuesday")
-        div.date
-        div.events
-      div(class="day wednesday")
-        div.date
-        div.events
-      div(class="day thursday")
-        div.date
-        div.events
-      div(class="day friday")
-        div.date
-        div.events
-      div(class="day saturday")
-        div.date
-        div.events
-    div(class="week week4")
-      div(class="day sunday")
-        div.date
-        div.events
-      div(class="day monday")
-        div.date
-        div.events
-      div(class="day tuesday")
-        div.date
-        div.events
-      div(class="day wednesday")
-        div.date
-        div.events
-      div(class="day thursday")
-        div.date
-        div.events
-      div(class="day friday")
-        div.date
-        div.events
-      div(class="day saturday")
-        div.date
-        div.events
-    div(class="week week5")
-      div(class="day sunday")
-        div.date
-        div.events
-      div(class="day monday")
-        div.date
-        div.events
-      div(class="day tuesday")
-        div.date
-        div.events
-      div(class="day wednesday")
-        div.date
-        div.events
-      div(class="day thursday")
-        div.date
-        div.events
-      div(class="day friday")
-        div.date
-        div.events
-      div(class="day saturday")
-        div.date
-        div.events
-      
+  div.grid
+
   script(src="/javascripts/cal.js")

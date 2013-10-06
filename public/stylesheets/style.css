@@ -3,6 +3,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: white; 
   background-color: #107F7F;
+  background-image: url("/images/binding_light.png");
 }
 
 a {
