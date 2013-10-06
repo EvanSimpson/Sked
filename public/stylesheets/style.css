@@ -17,6 +17,16 @@ a {
   font-size: 52px;
 }
 
+h1 a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+h1 a:hover {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
 .dayh h3 {
   text-align: center;
   margin-top: 0px;

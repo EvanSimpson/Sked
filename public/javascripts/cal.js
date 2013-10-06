@@ -6,6 +6,7 @@ $(function(){
 
 	function placeEvents(year, month, first, last) {		
 		$.get('/javascripts/data.json',function(data){
+			console.log(data);
 			$(".date").each(function(i,div){
 				if (i >= first && i-first+1 <= last){
 					var date = moment({"year":year, "month":month, "day":i-first+1}).format("YYYY-MM-DD");
@@ -25,14 +26,25 @@ $(function(){
 		$(".grid").html("");
 		var first = moment({"year":year, "month":month, "day":1}).day();
 		var last = moment({"year":year, "month":month}).daysInMonth();
-		console.log(last);
 		var week = 0;
 		for(var i = 0; i <= Math.floor((first+last-1)/7); i++){
 			week++;
 			addWeek(week);
 		}
 		placeEvents(year, month, first, last);
-		};
+		$(".day").click(function(obj){
+			var date = moment($(this).attr("date"));
+			$(".main").hide();
+			$(".dayView").show();
+			$.get("/"+date.year()+"/"+date.month()+"/"+date.date(),function(html){
+				$(".dayView").html(html);
+				$(".back").click(function(evnt){
+					$(".dayView").hide();
+					$(".main").show();
+				});
+			},'html');
+		});
+	};
 
 
 	$(".nav").click(function(evnt){
@@ -45,12 +57,7 @@ $(function(){
 		}
 		$.get('/month/'+date.year()+'/'+date.month(), function(html){
 			$(".main").html(html);
-			populate(date.year(), date.month());
 		},"html");
-	});
-
-
-	$(".day").click(function(obj){
 	});
 
 	populate($("#date").data("year"), $("#date").data("month"));

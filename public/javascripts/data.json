@@ -34,18 +34,40 @@
     "reminder":"false",
     "location":"Man Hall",
     "description":""
-  }]
-  },
-"format":{
-    "title":"",
-    "startTime":"",
-    "endTime":"",
-    "startDate":"",
-    "timezone":"",
-    "allDay":"",
-    "repeat":"",
-    "reminder":"",
-    "location":"",
+  }],
+  "2013-10-07":[
+  {
+    "title":"Office Hours",
+    "startTime":"2013-01-07T14:00:00Z",
+    "endTime":"2013-01-07T15:00:00Z",
+    "timezone":"EST",
+    "allDay":"false",
+    "repeat":"false",
+    "reminder":"false",
+    "location":"Team room",
     "description":""
+  },
+  {
+    "title":"Discrete Meeting",
+    "startTime":"2013-10-07T16:00:00Z",
+    "endTime":"2013-10-07T17:00:00Z",
+    "timezone":"EST",
+    "allDay":"false",
+    "repeat":"false",
+    "reminder":"false",
+    "location":"Team room",
+    "description":""
+  },
+  {
+    "title":"Party",
+    "startTime":"2013-10-07T23:00:00Z",
+    "endTime":"2013-10-08T02:00:00Z",
+    "timezone":"EST",
+    "allDay":"false",
+    "repeat":"false",
+    "reminder":"false",
+    "location":"Man Hall",
+    "description":""
+  }]
   }
 }
