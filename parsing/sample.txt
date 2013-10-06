@@ -1,0 +1,6 @@
+{"input": "Meeting this wednesday from 1pm to 3pm under the clocks every day from June 1st until July 3rd"}
+{"input": "All day Wednesday 26th anniversary"}
+{"input": "26th anniversary All day this Wednesday"}
+{"input": "June 2nd Arrested Development Marathon noon to 6PM"}
+{"input": "Meeting today at 3pm"}
+{"input": "Memorial Day 5 to 7 PM Party at Molly's House, bring food and chips"}
