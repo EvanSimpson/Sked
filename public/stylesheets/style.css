@@ -36,3 +36,17 @@ a {
 .event{
   color: #000000;
 }
+
+.entry {
+  height:400px;
+}
+
+.entry textarea{
+  padding:20px;
+  width:100%;
+}
+
+.result {
+  background-color: #FFFFFF;
+  height: 600px;
+}

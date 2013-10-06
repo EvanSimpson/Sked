@@ -24,9 +24,9 @@ app.configure(function () {
   app.use(express.cookieParser(app.get('secret')));
   app.use(express.session({
     secret: app.get('secret'),
-    store: new MongoStore({
-      url: process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB
-    })
+    // store: new MongoStore({
+    //   url: process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB
+    // })
   }));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
@@ -39,6 +39,9 @@ app.configure('development', function () {
 
 
 app.get('/', routes.index);
+app.get('/month/:month', function(req, res){
+	res.render('month');
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

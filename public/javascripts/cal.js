@@ -17,6 +17,10 @@ $(function(){
 			}			
 		});
 	},"json")
+
+	$(".day").click(function(obj){
+		
+	});
 	
 	
 });
