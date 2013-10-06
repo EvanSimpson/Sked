@@ -5,7 +5,6 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , routes = require('./routes')
   , mongojs = require('mongojs')
   , moment = require('moment')
   , MongoStore = require('connect-mongo')(express);
@@ -39,9 +38,12 @@ app.configure('development', function () {
 });
 
 
-app.get('/', routes.index);
-app.get('/month/:month', function(req, res){
-	res.render('month', {"month": moment().format("MMMM")});
+app.get('/', function(req, res){
+  res.render('index', { title: 'Sked' });
+});
+app.get('/month/:year/:month', function(req, res){
+	var date = moment({year:req.params.year, month:req.params.month});
+	res.render('month', {"month": date.format("MMMM"), "back":date.subtract("M", 1).month(), "forward":date.add("M", 1).month(), "year":date.year()});
 });
 
 http.createServer(app).listen(app.get('port'), function(){

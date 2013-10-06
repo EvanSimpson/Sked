@@ -2,12 +2,12 @@ block content
   div.gridCal
   div.month
     div.row
-      div(class="month-back col-lg-3")
-        | ← Previous
+      div(class="month-back month-nav col-lg-3")
+        a(href="#" class="nav" data-month={back}) ← Previous
       div(id="month" class="col-lg-6")
         h1= month
-      div(class="month-forward col-lg-3")
-        | Next →
+      div(class="month-forward month-nav col-lg-3")
+        a(href="#" class="nav" data-month={forward}) Next →
   div(class="weekdays")
       div(class="dayh sunday")
         h3 Sunday

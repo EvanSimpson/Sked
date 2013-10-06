@@ -13,10 +13,10 @@ a {
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
-  font-size: 36px;
+  font-size: 52px;
 }
 
-h3 {
+.dayh h3 {
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -87,12 +87,20 @@ h3 {
 }
 
 .month-back {
-  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: left;
 }
 
 .month-forward {
-  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: right;
+}
+
+.month-nav {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.month-nav a {
+  font-size: 36px;
+  color: #FFFFFF;  
 }
 
