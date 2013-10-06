@@ -1,29 +1,45 @@
 $(function () {
 
-$('#editor').on('keydown', function () {
-  setTimeout(function () {
-    var analyze = $('#editor').val();
+var editors = 1;
 
-    parseAll(analyze, function (sentence) {
-      $('#bg').html('').append(sentence.ranges.map(function (s) {
-        return $('<span>').text(s.text).addClass('live-' + s.type);
-      }));
+function setListener(){
+  $('.editor').on('keydown', function () {
+    var num = $(this).attr("id")[$(this).attr("id").length-1];
+    setTimeout(function () {
+      var analyze = $("#editor"+num).val();
 
-      delete sentence.ranges;
-      $('#output').text(JSON.stringify(sentence, null, '  '));
-      console.log($('#bg').html());
-    });
-  }, 0)
-});
-
-function fixScroll () {
-  $('#bg')[0].scrollTop = $('#editor')[0].scrollTop;
+      parseAll(analyze, function (sentence) {
+        delete sentence.ranges;
+        console.log(sentence);
+        if(sentence.event.hours.start != null){
+          var hour = amPm(parseInt(sentence.event.hours.start), sentence.event.hours.ampm);
+          $('#out'+hour).text("Start time: "+ sentence.event.hours.start);
+        }
+        $('#output'+num).text(JSON.stringify(sentence, null, '  '));
+        $('#output'+num).css({"visibility":"visible"});
+      });
+    }, 0)
+  });
 }
 
-$('#editor').on('keydown', fixScroll);
-$('#editor').on('mousedown', fixScroll);
-$('#editor').on('mousemove', fixScroll);
-$('#editor').on('mouseup', fixScroll);
-$('#editor').on('keyup', fixScroll);
+function amPm(hour, ampm){
+  if(ampm === "am"){
+    return hour;
+  }else if(hour > 12){
+    return hour;
+  }else{
+    return 12+hour;
+  }
+}
+
+$(".add").click(function(){
+  editors++;
+  $(".add").before('<textarea id="editor'+editors+'" class="editor"></textarea>');
+  setListener();
+});
+
+$(".backButton")
+
+setListener();
 
 });
