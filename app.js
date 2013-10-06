@@ -12,7 +12,7 @@ var express = require('express')
 var app = express(), db;
 
 app.configure(function () {
-  db = mongojs(process.env.MONGOLAB_URI || 'olinapps-quotes', ['quotes']);
+  db = mongojs(process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB);
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -24,9 +24,9 @@ app.configure(function () {
   app.use(express.cookieParser(app.get('secret')));
   app.use(express.session({
     secret: app.get('secret'),
-    // store: new MongoStore({
-    //   url: process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB
-    // })
+    store: new MongoStore({
+      url: process.env.MONGOLAB_URI || process.env.SKED_MONGOLAB
+    })
   }));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
@@ -48,6 +48,21 @@ app.get('/month/:year/:month', function(req, res){
 app.get('/:year/:month/:day', function(req, res){
 	var date = moment({year:req.params.year, month:req.params.month, day:req.params.day});
 	res.render('day');
+});
+
+
+
+app.get('/events', function(req, res){
+	db.events.find().sort();
+});
+app.post('/event/create', function(req, res){
+	db.events.save();
+});
+app.post('/event/update', function(req, res){
+	db.events.update();
+});
+app.del('/event/delete', function(req, res){
+	db.events.remove();
 });
 
 http.createServer(app).listen(app.get('port'), function(){

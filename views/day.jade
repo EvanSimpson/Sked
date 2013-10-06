@@ -1,0 +1,12 @@
+block content
+	div
+		button.back
+			| ← Back
+		div.row
+			div(class="col-lg-6" id="editor-parent")
+				textarea#editor
+				div#bg
+			pre#output
+			div(class="col-lg-6" id="results")
+	script(src='/javascripts/parse.js')
+	script(src='/javascripts/capture.js')

@@ -1,9 +1,9 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: white; 
   background-color: #107F7F;
   background-image: url("/images/binding_light.png");
+  font-family: 'Open Sans', sans-serif;
 }
 
 a {
@@ -66,7 +66,7 @@ h1 a:hover {
 
 .date {
   color: #107F7F;
-  font: 20px;
+  font-size: 20px;
 }
 
 .event{
