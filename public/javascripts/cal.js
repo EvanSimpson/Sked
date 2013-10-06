@@ -19,6 +19,10 @@ $(function(){
 	},"json");
 
 
+	$(".nav").click(function(evnt){
+		$.get('/month/'++'/'+)
+	});
+
 
 	$(".day").click(function(obj){
 		// $.get('',function());
