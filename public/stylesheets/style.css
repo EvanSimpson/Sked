@@ -9,6 +9,19 @@ a {
   color: #00B7FF;
 }
 
+#month h1 {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 36px;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 .nav-tabs {
   background-color: #055454;
 }
@@ -23,9 +36,21 @@ a {
   background-color: #FFFFFF;
   border: 2px solid #107F7F;
   height: 100%;
-  width: 14%;
+  width: 14.28%;
   vertical-align: top;
   padding: 5px;
+}
+
+.dayh {
+  display: inline-block;
+  display: table-cell;
+  background-color: #FFFFFF;
+  border: 2px solid #107F7F;
+  color: #107F7F;
+  margin: auto;
+  height: 50px;
+  width: 14.28%;
+  vertical-align: middle;
 }
 
 .date {
@@ -50,3 +75,24 @@ a {
   background-color: #FFFFFF;
   height: 600px;
 }
+
+.weekdays {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+#month {
+  text-align: center;
+}
+
+.month-back {
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: left;
+}
+
+.month-forward {
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: right;
+}
+

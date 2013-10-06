@@ -16,10 +16,12 @@ $(function(){
 				}
 			}			
 		});
-	},"json")
+	},"json");
+
+
 
 	$(".day").click(function(obj){
-		
+		// $.get('',function());
 	});
 	
 	
