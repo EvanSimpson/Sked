@@ -125,6 +125,8 @@ function interpret (sentence, next) {
     }
   }
 
+  var description = [];
+
   sentence.ranges.forEach(function (range) {
     if (range.type == 'month' || range.type == 'day') {
       if (!event.date.start || range.text.match(/(from|starting)/i)) {
@@ -146,7 +148,12 @@ function interpret (sentence, next) {
     if (range.type == 'repeat') {
       event.repeat = range.text;
     }
+    if (range.type == null) {
+      description.push(range.text);
+    }
   });
+  event.description = description.join(' ');
+  event.description.match(/^\s+/) && (event.description = 'New event');
   next();
 }
 

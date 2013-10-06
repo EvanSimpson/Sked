@@ -1,5 +1,6 @@
 block content
 	style.
+		#results > .output { height: 60px; overflow: hidden; box-sizing: border-box }
 		#out1::after { color: #aaa; content: "12am"; float: right; }
 		#out2::after { color: #aaa; content: "1am"; float: right; }
 		#out3::after { color: #aaa; content: "2am"; float: right; }
@@ -25,8 +26,12 @@ block content
 		#out23::after { color: #aaa; content: "10pm"; float: right; }
 		#out24::after { color: #aaa; content: "11pm"; float: right; }
 
-		#results { margin-top: -120px; height: 1014px; overflow: auto; box-sizing: border-box; }
+		#dayplanner { margin-top: -120px; overflow: auto; box-sizing: border-box; position: relative; }
 		body { padding-bottom: 0; margin-bottom: 0; }
+
+		#myevents { position: absolute; top: 4px; }
+		#myevents > * { width: 100px; background: rgba(255, 0, 0, 0.4); padding: 8px 12px; border: 1px solid #600;
+		position: absolute; left: 20px; box-sizing: border-box }
 
 	div
 		div.row
@@ -37,31 +42,33 @@ block content
 					textarea(class="editor" id="editor1")
 					div.add
 						a(href="#" id="addButton") + Add
-			div(class="col-lg-6" id="results")
-				div(class="output" id="out1")
-				div(class="output" id="out2")
-				div(class="output" id="out3")
-				div(class="output" id="out4")
-				div(class="output" id="out5")
-				div(class="output" id="out6")
-				div(class="output" id="out7")
-				div(class="output" id="out8")
-				div(class="output" id="out9")
-				div(class="output" id="out10")
-				div(class="output" id="out11")
-				div(class="output" id="out12")
-				div(class="output" id="out13")
-				div(class="output" id="out14")
-				div(class="output" id="out15")
-				div(class="output" id="out16")
-				div(class="output" id="out17")
-				div(class="output" id="out18")
-				div(class="output" id="out19")
-				div(class="output" id="out20")
-				div(class="output" id="out21")
-				div(class="output" id="out22")
-				div(class="output" id="out23")
-				div(class="output" id="out24")
+			div#dayplanner.fullheight(class="col-lg-6")
+				div#results
+					div(class="output" id="out1")
+					div(class="output" id="out2")
+					div(class="output" id="out3")
+					div(class="output" id="out4")
+					div(class="output" id="out5")
+					div(class="output" id="out6")
+					div(class="output" id="out7")
+					div(class="output" id="out8")
+					div(class="output" id="out9")
+					div(class="output" id="out10")
+					div(class="output" id="out11")
+					div(class="output" id="out12")
+					div(class="output" id="out13")
+					div(class="output" id="out14")
+					div(class="output" id="out15")
+					div(class="output" id="out16")
+					div(class="output" id="out17")
+					div(class="output" id="out18")
+					div(class="output" id="out19")
+					div(class="output" id="out20")
+					div(class="output" id="out21")
+					div(class="output" id="out22")
+					div(class="output" id="out23")
+					div(class="output" id="out24")
+				div#myevents
 		
 	script(src='/javascripts/parse.js')
 	script(src='/javascripts/capture.js')

@@ -38,6 +38,7 @@ $(function(){
 			$(".dayView").show();
 			$.get("/"+date.year()+"/"+date.month()+"/"+date.date(),function(html){
 				$(".dayView").html(html);
+				$('textarea').focus()
 				$(".back").click(function(evnt){
 					$(".dayView").hide();
 					$(".main").show();
