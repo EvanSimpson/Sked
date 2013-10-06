@@ -1,8 +1,38 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: white; 
+  background-color: #107F7F;
 }
 
 a {
   color: #00B7FF;
+}
+
+.nav-tabs {
+  background-color: #055454;
+}
+
+.week {
+  height: 150px;
+  width: 100%;
+}
+
+.day {
+  display: inline-block;
+  background-color: #FFFFFF;
+  border: 2px solid #107F7F;
+  height: 100%;
+  width: 14%;
+  vertical-align: top;
+  padding: 5px;
+}
+
+.date {
+  color: #107F7F;
+  font: 20px;
+}
+
+.event{
+  color: #000000;
 }

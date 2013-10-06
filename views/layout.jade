@@ -2,7 +2,11 @@ doctype 5
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src=/javascripts/d3.min.js)
+    script(src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.js')
+    script(src='/javascripts/jquery.js')
   body
-    block content
+    div.container
+      h1 Sked
+      block content
