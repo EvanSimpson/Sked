@@ -1,8 +1,26 @@
 extends layout
 
 block content
-  div
-    div.row
-      div(class="entry col-lg-6")
-        textarea
-      div(class="result col-lg-6")
+  textarea(cols=100)#input every day at 9pm
+  button#download Download iCal
+  pre#output
+
+  script(src='/javascripts/parse.js')
+  script(src='/javascripts/capture.js')
+  script.
+    $('#input').on('keydown', function () {
+      setTimeout(function () {
+        console.log('hi')
+        var val = $(this).val()
+        parseAll(val, function (res) {
+          var ranges = res.ranges;
+          delete res.ranges;
+          res.ranges = ranges;
+          $('#output').text(JSON.stringify(res, null, '  '));
+        })
+      }.bind(this), 0);
+    }).trigger('keydown');
+    
+    $('#download').on('click', function () {
+      window.location.href = '/download?string=' + encodeURIComponent($('#input').val())
+    })

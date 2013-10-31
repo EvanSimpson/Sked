@@ -1,3 +1,7 @@
+if (typeof moment == 'undefined') {
+  moment = require('moment');
+}
+
 function iterate (sentence, type, fn, next) {
   var retcount = 0;
   do {
@@ -140,9 +144,9 @@ function interpret (sentence, next) {
         event.hours.start = '12AM'
         event.hours.end = '11:59PM'
       } else if (!event.hours.start || range.text.match(/(from|starting)/i)) {
-        event.hours.start = range.text.replace(/\b(from|to|until|at|on)\b/i, '');
+        event.hours.start = range.text.replace(/\b(from|to|until|at|on)\b/i, '').replace(/^\s+|\s+$/, '');
       } else if (range.text.match(/(until|to)/i)) {
-        event.hours.end = range.text.replace(/\b(from|to|until|at|on)\b/i, '');
+        event.hours.end = range.text.replace(/\b(from|to|until|at|on)\b/i, '').replace(/^\s+|\s+$/, '');
       }
     }
     if (range.type == 'repeat') {
@@ -152,6 +156,20 @@ function interpret (sentence, next) {
       description.push(range.text);
     }
   });
+
+  // Parse the start and end times of the event.
+  var start = moment(event.hours.start, 'ha');
+  var end = event.hours.end ? moment(event.hours.end, 'ha') : moment(start).add('hours', 1);
+  console.log(event.hours.start, start.format());
+  // Reconstitute the hours involved.
+  var starthours = start.hours();
+  var endhours = end.hours();
+  if (endhours < starthours) {
+    endhours += 12;
+  }
+  event.startdate = (function () { var a = new Date(); a.setHours(starthours); return a; })();
+  event.enddate = (function () { var a = new Date(); a.setHours(endhours <= starthours ? starthours + 1 : endhours); return a; })();
+
   event.description = description.join(' ');
   event.description.match(/^\s+/) && (event.description = 'New event');
   next();

@@ -41,23 +41,30 @@ app.configure('development', function () {
 app.get('/', function(req, res){
   res.render('index', { title: 'Sked' });
 });
-app.get('/month/:year/:month', function(req, res){
-	var date = moment({year:req.params.year, month:req.params.month});
-	res.render('month', {"monthnum":date.month(), "month": date.format("MMMM"), "year":date.year()});
-});
-app.get('/:year/:month/:day', function(req, res){
-	var date = moment({year:req.params.year, month:req.params.month, day:req.params.day});
-	res.render('day');
-});
+
+var calparse = require('./public/javascripts/parse.js');
+var ical = require('ical-generator');
 
 
+app.get('/download', function (req, res) {
+  calparse.parseAll(req.query.string, function (event) {
+    cal = ical();
 
-app.get('/events', function(req, res){
-	db.events.find().sort();
-});
-app.post('/event/create', function(req, res){
-	db.events.save();
-});
+    cal.setDomain('typecal.herokuapp.com');
+
+    console.log(event);
+
+    cal.addEvent({
+        start: event.event.startdate,
+        end: event.event.enddate,
+        summary: event.event.description,
+        description: event.event.description,
+        location: ''
+    });
+
+    cal.serve(res);
+  });
+})
 app.post('/event/update', function(req, res){
 	db.events.update();
 });
